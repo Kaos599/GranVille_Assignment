@@ -1,0 +1,5 @@
+groq
+duckduckgo-search
+google-generativeai
+textstat
+python-dotenv
