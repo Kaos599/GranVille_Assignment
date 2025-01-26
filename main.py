@@ -3,6 +3,7 @@ from groq import Groq
 from duckduckgo_search import DDGS
 import google.generativeai as genai
 import json
+import textstat
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,7 +19,7 @@ if not GEMINI_API_KEY:
     exit()
 genai.configure(api_key=GEMINI_API_KEY)
 
-def call_groq_llm(prompt, system_message=None, model="llama-3.3-70b-versatile", temperature=0.7):
+def call_groq_llm(prompt, system_message=None, model="llama3-8b-instant", temperature=0.7):
     """
     Function to call the Groq LLM API using the groq Python library.
     Corrected parameter name: using 'max_tokens' instead of 'max_completion_tokens'
@@ -110,12 +111,60 @@ def duckduckgo_search_func(query):
         print(f"Error during DuckDuckGo search: {e}")
         return "Error fetching DuckDuckGo search results."
 
+def analyze_educational_content_json(json_filepath):
+    """
+    Analyzes a single educational content JSON file for quality metrics,
+    including multiple readability scores from textstat.
+
+    Args:
+        json_filepath (str): Path to the JSON file.
+
+    Returns:
+        dict: Dictionary of analysis metrics for the content, including readability scores.
+    """
+    analysis_metrics = {}
+
+    try:
+        with open(json_filepath, 'r') as f:
+            content_data = json.load(f)
+
+        analysis_metrics['filename'] = os.path.basename(json_filepath)
+
+        # --- Extract Text Content for Analysis ---
+        full_text_content = ""
+        if "title" in content_data:
+            full_text_content += content_data.get("title", "") + ". "
+        if "summary" in content_data:
+            full_text_content += content_data.get("summary", "") + ". "
+        if "sections" in content_data and isinstance(content_data["sections"], list):
+            for section in content_data["sections"]:
+                if "content" in section:
+                    full_text_content += section.get("content", "") + ". "
+
+        analysis_metrics['extracted_text_length'] = len(full_text_content)
+
+        # --- Linguistic Clarity (Readability) - Multiple Metrics from textstat ---
+        try:
+            analysis_metrics['readability_flesch_kincaid_grade'] = textstat.flesch_kincaid_grade(full_text_content)
+            analysis_metrics['readability_smog_grade'] = textstat.smog_grade(full_text_content)
+            analysis_metrics['readability_coleman_liau_index'] = textstat.coleman_liau_index(full_text_content)
+            analysis_metrics['readability_automated_readability_index'] = textstat.automated_readability_index(full_text_content)
+            analysis_metrics['readability_linsear_write_formula'] = textstat.linsear_write_formula(full_text_content)
+            analysis_metrics['readability_dale_chall_readability_score'] = textstat.dale_chall_readability_score(full_text_content)
+
+        except Exception as e:
+            analysis_metrics['readability_error'] = "Error calculating readability metrics"
+            print(f"  Warning: Error calculating readability for {json_filepath}: {e}")
+
+        return analysis_metrics
+
+
 def generate_educational_content_workflow(grade_level, subject, topic, topic_details=""):
     """
     Main function to run the educational content generation workflow.
     Mimics the Langflow workflow but in Python code.
     Using Gemini to generate structured JSON for the simplification step.
-    Saves the output to a JSON file.
+    Saves the output to a JSON file AND calls the analysis function.
     """
     print("\n--- Starting Educational Content Generation Workflow ---")
     print(f"Input: Grade Level: {grade_level}, Subject: {subject}, Topic: {topic}, Details: {topic_details}")
@@ -179,22 +228,28 @@ def generate_educational_content_workflow(grade_level, subject, topic, topic_det
 
     simplified_content_json = call_gemini_llm_structured(prompt=simplification_prompt, model_name="gemini-2.0-flash-exp", temperature=0.7)
 
-    
-    output_dir = "output_json" 
-    os.makedirs(output_dir, exist_ok=True) 
+    # --- Save to JSON File ---
+    output_dir = "output_json"
+    os.makedirs(output_dir, exist_ok=True)
 
-    
     filename = f"{subject.replace(' ', '_')}_{grade_level.replace(' ', '_')}_{topic.replace(' ', '_')}.json"
     filepath = os.path.join(output_dir, filename)
 
     with open(filepath, 'w') as f:
-        json.dump(simplified_content_json, f, indent=4) 
+        json.dump(simplified_content_json, f, indent=4)
 
     print(f"\n--- Final Educational Content (Simplified JSON - Bias Mitigation Removed) ---\n")
-    print(json.dumps(simplified_content_json, indent=2)) 
-    print(f"\n--- JSON output saved to: {filepath} ---\n") 
+    print(json.dumps(simplified_content_json, indent=2))
+    print(f"\n--- JSON output saved to: {filepath} ---\n")
+
+    # --- Call Analysis Function ---
+    print("\n--- Calling Content Analysis Function ---")
+    analysis_metrics = analyze_educational_content_json(filepath) 
+    print("\n--- Content Analysis Complete ---")
+
 
     return simplified_content_json
+
 
 if __name__ == "__main__":
     test_inputs = [
