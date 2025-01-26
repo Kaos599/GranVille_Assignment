@@ -14,7 +14,17 @@ This Python prototype system is designed to generate and analyze educational con
 *   **Evaluate Content Quality:** Automatically analyze generated content for readability using various metrics from the `textstat` library.
 *   **Modular and Scalable Pipeline:** Structure the system as a modular pipeline for content generation, refinement, and evaluation, making it extensible for future features.
 
-This prototype is built to fulfill the requirements outlined in the Task Description for Granville ech company.
+This prototype is built to fulfill the requirements outlined in the Task Description for Granville Tech company.
+
+## Output Screenshot
+
+### Educational Content Output
+
+![Screenshot 2025-01-26 235447](https://github.com/user-attachments/assets/0fc3d317-63fa-4943-a250-a0b7bdf8c3e5)
+
+### Readability Analysis
+
+![Screenshot 2025-01-26 235522](https://github.com/user-attachments/assets/f079bc9d-ff11-4e4b-9372-48c9c5989d7e)
 
 ## Workflow Architecture
 
