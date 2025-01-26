@@ -255,8 +255,9 @@ def generate_educational_content_workflow(grade_level, subject, topic, topic_det
 
     # --- Call Analysis Function ---
     print("\n--- Calling Content Analysis Function ---")
+    analysis_metrics = analyze_educational_content_json(filepath)
     print("\n--- Content Analysis Metrics ---")
-    print(json.dumps(analysis_metrics, indent=2))  # Add this line to print the metrics
+    print(json.dumps(analysis_metrics, indent=2))  
     print("\n--- Content Analysis Complete ---")
 
 
