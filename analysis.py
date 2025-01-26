@@ -39,7 +39,7 @@ def analyze_educational_content_json(json_filepath):
         
         try:
             analysis_metrics['readability_flesch_kincaid_grade'] = textstat.flesch_kincaid_grade(full_text_content)
-            analysis_metrics['readability_smog_grade'] = textstat.smog_grade(full_text_content)
+            analysis_metrics['readability_smog_grade'] = textstat.smog_index(full_text_content)
             analysis_metrics['readability_coleman_liau_index'] = textstat.coleman_liau_index(full_text_content)
             analysis_metrics['readability_automated_readability_index'] = textstat.automated_readability_index(full_text_content)
             analysis_metrics['readability_linsear_write_formula'] = textstat.linsear_write_formula(full_text_content)
