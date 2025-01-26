@@ -1,0 +1,23 @@
+{
+    "title": "Super Searching with DuckDuckGo",
+    "grade_level_appropriateness_assessment": "Excellent",
+    "sections": [
+        {
+            "heading": "Introduction to DuckDuckGo",
+            "content": "DuckDuckGo is a search engine, like Google, but it's known for being more private! It helps you find information on the internet. But did you know you can make your searches even better?"
+        },
+        {
+            "heading": "Boolean Search: Using AND, OR, and NOT",
+            "content": "Imagine you're telling the search engine exactly what you want. You can do this using special words called 'Boolean operators':\n\n*   **AND:** Use 'AND' to find results that include *both* words. For example, 'cats AND dogs' will show results about both cats and dogs.\n*   **OR:** Use 'OR' to find results that include *either* word. For example, 'pizza OR pasta' will show results about pizza, pasta, or both.\n*   **NOT:** Use 'NOT' to exclude results with a certain word. For example, 'cars NOT trucks' will show results about cars but not trucks."
+        },
+        {
+            "heading": "Searching Directly on Other Sites",
+            "content": "DuckDuckGo has some cool shortcuts!\n\n*   **\\ (backslash):** Type '\\' followed by a word to go directly to the first search result. For example, '\\wikipedia' will take you to the Wikipedia website.\n*   **! (exclamation point):** Type '!' followed by a website name to search directly on *that* website. For example, '!youtube funny cats' will search for 'funny cats' on YouTube."
+        },
+        {
+            "heading": "Other Cool Search Tricks",
+            "content": "There are other ways to make your searches better:\n\n*   You can use quotation marks \" \" to search for an exact phrase. For example, \"the quick brown fox\" will only show results that have that exact phrase.\n*   You can use parentheses ( ) to group search terms. For example, (cats OR dogs) AND food will find results about food for either cats or dogs. \n* You can use an asterisk * as a wildcard. For example, 'best * ever' will find results such as 'best movie ever' or 'best game ever'."
+        }
+    ],
+    "summary": "DuckDuckGo helps you search the internet, and you can use special tricks like AND, OR, NOT, \\, and ! to find exactly what you're looking for! Using quotation marks, parentheses, and wildcards can also make your searches more effective."
+}
