@@ -41,8 +41,8 @@ User Input (Grade Level, Subject, Topic)
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [repository URL]
-    cd [repository directory]
+    git clone https://github.com/Kaos599/GranVille_Assignment.git
+    cd GranVille_Assignment
     ```
 
 2.  **Install Python Dependencies:**
