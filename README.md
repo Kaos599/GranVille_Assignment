@@ -154,10 +154,3 @@ These metrics provide an initial assessment of the linguistic clarity and grade-
 [![Project Status: Prototype](https://img.shields.io/badge/Project%20Status-Prototype-orange.svg)](#project-description)
 
 This project is currently in the **Prototype** stage. It demonstrates the core functionality of educational content generation and analysis but is not yet a production-ready system. Future development is planned to enhance its features and robustness.
-
-## Badges
-
-*   [![Python Version](https://img.shields.io/badge/python-%3E=3.8-blue.svg)](https://www.python.org/) -  Indicates the minimum Python version required.
-*   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) -  Shows that the project is licensed under the MIT License.
-*   [![Project Status: Prototype](https://img.shields.io/badge/Project%20Status-Prototype-orange.svg)](#project-status) -  Indicates the current development stage of the project.
-
