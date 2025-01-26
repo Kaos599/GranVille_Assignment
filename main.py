@@ -19,7 +19,7 @@ if not GEMINI_API_KEY:
     exit()
 genai.configure(api_key=GEMINI_API_KEY)
 
-def call_groq_llm(prompt, system_message=None, model="llama3-8b-instant", temperature=0.7):
+def call_groq_llm(prompt, system_message=None, model="llama-3.3-70b-versatile", temperature=0.7):
     """
     Function to call the Groq LLM API using the groq Python library.
     Corrected parameter name: using 'max_tokens' instead of 'max_completion_tokens'
