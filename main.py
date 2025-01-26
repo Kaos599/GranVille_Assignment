@@ -1,6 +1,6 @@
 import os
 from groq import Groq  
-from duckduckgo_search import DuckDuckGo as ddg  
+from duckduckgo_search import DDGS  
 
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")  
@@ -10,7 +10,7 @@ if not GROQ_API_KEY:
 
 
 
-def call_groq_llm(prompt, system_message=None, model="llama-3-8b-instant", temperature=0.1):
+def call_groq_llm(prompt, system_message=None, model="llama-3.1-70b-versatile", temperature=0.8):
     """
     Function to call the Groq LLM API using the groq Python library.
     """
@@ -30,7 +30,7 @@ def call_groq_llm(prompt, system_message=None, model="llama-3-8b-instant", tempe
             model=model,
             messages=messages_list,
             temperature=temperature,
-            max_completion_tokens=1024, 
+            max_completion_tokens=6024, 
             top_p=1,
             stream=False, 
             stop=None,
@@ -47,13 +47,14 @@ def call_groq_llm(prompt, system_message=None, model="llama-3-8b-instant", tempe
 
 def duckduckgo_search_func(query): 
     """
-    Function for DuckDuckGo search using the duckduckgo-search library.
+    Function for DuckDuckGo text search using the duckduckgo-search library DDGS class.
     """
     print(f"\n--- DuckDuckGo Search ---")
     print(f"Query: {query}")
 
     try:
-        results = ddg(query, max_results=5) 
+        ddgs = DDGS() 
+        results = ddgs.text(keywords=query, max_results=5) 
         search_results_text = "\n".join([f"Title: {res['title']}\nSnippet: {res['body']}\nURL: {res['href']}" for res in results]) if results else "No search results found."
         print(f"Search Results:\n{search_results_text}\n")
         return search_results_text
@@ -64,28 +65,11 @@ def duckduckgo_search_func(query):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def generate_educational_content_workflow(grade_level, subject, topic, topic_details=""):
     """
     Main function to run the educational content generation workflow.
     Mimics the Langflow workflow but in Python code.
+    Bias mitigation steps are removed in this version.
     """
     print("\n--- Starting Educational Content Generation Workflow ---")
     print(f"Input: Grade Level: {grade_level}, Subject: {subject}, Topic: {topic}, Details: {topic_details}")
@@ -138,37 +122,18 @@ def generate_educational_content_workflow(grade_level, subject, topic, topic_det
 
     
 
-    return simplified_content
-    # bias_report = detect_bias_basic_keywords(simplified_content)
-    # print(f"\n--- Bias Detection Report (Basic Keyword Check) ---\n{bias_report}\n")
+    
 
     
-    # bias_mitigation_prompt_template = """
-    # The following educational content has been flagged for potential biases (see bias report). Revise the content to remove or rephrase any biased language and ensure it is inclusive, fair, and neutral.
-
-    # Bias Report: {bias_report}
-
-    # Potentially Biased Content: {potentially_biased_content}
-    # """
-    # bias_mitigation_prompt = bias_mitigation_prompt_template.format(
-    #     bias_report=bias_report, potentially_biased_content=simplified_content
-    # )
-
-    
-    # bias_mitigated_content = call_groq_llm(prompt=bias_mitigation_prompt, system_message="You are an AI assistant specialized in removing biases from text and ensuring inclusivity and fairness in language. You will revise the content based on the provided bias report.")
-
-    
-    # print("\n--- Final Educational Content (Bias Mitigated) ---\n")
-    # print(bias_mitigated_content)
-    # return bias_mitigated_content
+    print("\n--- Final Educational Content (Simplified - Bias Mitigation Removed) ---\n")
+    print(simplified_content) 
+    return simplified_content 
 
 
 if __name__ == "__main__":
     test_inputs = [
         {"grade_level": "3rd Grade", "subject": "Science", "topic": "The Water Cycle", "topic_details": "Explain the stages of the water cycle: evaporation, condensation, precipitation, and collection. Use simple terms and examples that a 3rd grader can understand. Mention the importance of the water cycle for life on Earth."},
-        {"grade_level": "7th Grade", "subject": "History", "topic": "Ancient Egypt", "topic_details": "Focus on the pyramids of Giza, the pharaohs (like Tutankhamun), and the importance of the Nile River to ancient Egyptian civilization. Keep it engaging for 7th graders and mention some interesting facts or stories."},
-        {"grade_level": "10th Grade", "subject": "Math", "topic": "Quadratic Equations", "topic_details": "Explain what a quadratic equation is, the standard form (ax^2 + bx + c = 0), and methods to solve them (factoring, quadratic formula). Include a simple example and explain the concept of roots or solutions."},
-        {"grade_level": "8th Grade", "subject": "Literature", "topic": "Theme in Literature", "topic_details": "Explain what 'theme' means in a story or poem. Use examples of common themes like 'friendship,' 'courage,' 'good vs. evil,' and 'overcoming challenges.' Keep the explanation clear and relatable for 8th graders."}
+        {"grade_level": "7th Grade", "subject": "History", "topic": "Ancient Egypt", "topic_details": "Focus on the pyramids of Giza, the pharaohs (like Tutankhamun), and the importance of the Nile River to ancient Egyptian civilization. Keep it engaging for 7th graders and mention some interesting facts or stories."}
     ]
 
     for input_data in test_inputs:
