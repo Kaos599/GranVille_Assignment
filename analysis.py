@@ -1,16 +1,17 @@
 import os
 import json
-import textstat  
+import textstat  # For readability metrics
 
 def analyze_educational_content_json(json_filepath):
     """
-    Analyzes a single educational content JSON file for quality metrics.
+    Analyzes a single educational content JSON file for quality metrics,
+    including multiple readability scores from textstat.
 
     Args:
         json_filepath (str): Path to the JSON file.
 
     Returns:
-        dict: Dictionary of analysis metrics for the content.
+        dict: Dictionary of analysis metrics for the content, including readability scores.
     """
     analysis_metrics = {}
 
@@ -20,7 +21,7 @@ def analyze_educational_content_json(json_filepath):
 
         analysis_metrics['filename'] = os.path.basename(json_filepath)
 
-        
+        # --- Extract Text Content for Analysis ---
         full_text_content = ""
         if "title" in content_data:
             full_text_content += content_data.get("title", "") + ". "
@@ -32,26 +33,29 @@ def analyze_educational_content_json(json_filepath):
                     full_text_content += section.get("content", "") + ". "
 
         analysis_metrics['extracted_text_length'] = len(full_text_content)
+        print(full_text_content) # ADD THIS LINE
+        print("--- End of Text Content ---") # ADD THIS LINE
 
-        
+        # --- Linguistic Clarity (Readability) - Multiple Metrics from textstat ---
         try:
-            readability_score = textstat.flesch_kincaid_grade(full_text_content)
-            analysis_metrics['readability_flesch_kincaid_grade'] = readability_score
+            analysis_metrics['readability_flesch_kincaid_grade'] = textstat.flesch_kincaid_grade(full_text_content)
+            analysis_metrics['readability_smog_grade'] = textstat.smog_grade(full_text_content)
+            analysis_metrics['readability_coleman_liau_index'] = textstat.coleman_liau_index(full_text_content)
+            analysis_metrics['readability_automated_readability_index'] = textstat.automated_readability_index(full_text_content)
+            analysis_metrics['readability_linsear_write_formula'] = textstat.linsear_write_formula(full_text_content)
+            analysis_metrics['readability_dale_chall_readability_score'] = textstat.dale_chall_readability_score(full_text_content)
+            # You can add more metrics from textstat if needed, e.g., gunning_fog, text_standard, etc.
+
         except Exception as e:
-            analysis_metrics['readability_flesch_kincaid_grade'] = "Error calculating readability"
+            analysis_metrics['readability_error'] = "Error calculating readability metrics"
             print(f"  Warning: Error calculating readability for {json_filepath}: {e}")
 
-        
-        
-        
-        
-        
-
+        # --- Coherence and Contextual Alignment (Placeholder - Needs More Advanced NLP or Human Evaluation) ---
         analysis_metrics['coherence_assessment'] = "Placeholder - Needs Advanced NLP or Human Evaluation"
         analysis_metrics['contextual_alignment_assessment'] = "Placeholder - Needs Curriculum/Knowledge Base Integration & Evaluation"
 
         print(f"\n--- Analysis Metrics for: {json_filepath} ---")
-        print(json.dumps(analysis_metrics, indent=4)) 
+        print(json.dumps(analysis_metrics, indent=4)) # Print metrics for each file
 
     except FileNotFoundError:
         analysis_metrics['error'] = "FileNotFoundError"
@@ -69,7 +73,8 @@ def analyze_educational_content_json(json_filepath):
 
 def analyze_json_files_in_directory(directory_path="output_json"):
     """
-    Analyzes all JSON files in the specified directory and generates a summary report.
+    Analyzes all JSON files in the specified directory and generates a summary report,
+    including multiple readability metrics in the report.
 
     Args:
         directory_path (str): Path to the directory containing JSON files (default: "output_json").
@@ -89,16 +94,23 @@ def analyze_json_files_in_directory(directory_path="output_json"):
     all_files_metrics = []
     for json_file in json_files:
         json_filepath = os.path.join(directory_path, json_file)
-        file_metrics = analyze_educational_content_json(json_filepath) 
-        all_files_metrics.append(file_metrics) 
+        file_metrics = analyze_educational_content_json(json_filepath) # Analyze each JSON file
+        all_files_metrics.append(file_metrics) # Collect metrics for all files
 
-    
+    # --- Generate Summary Report ---
     print("\n--- Summary Report: Analysis of Educational Content JSON Files ---")
     for metrics in all_files_metrics:
         print(f"\nFile: {metrics.get('filename', 'N/A')}")
         print(f"  Readability (Flesch-Kincaid Grade Level): {metrics.get('readability_flesch_kincaid_grade', 'N/A')}")
+        print(f"  Readability (SMOG Grade): {metrics.get('readability_smog_grade', 'N/A')}")
+        print(f"  Readability (Coleman-Liau Index): {metrics.get('readability_coleman_liau_index', 'N/A')}")
+        print(f"  Readability (ARI): {metrics.get('readability_automated_readability_index', 'N/A')}")
+        print(f"  Readability (Linsear Write Formula): {metrics.get('readability_linsear_write_formula', 'N/A')}")
+        print(f"  Readability (Dale-Chall Score): {metrics.get('readability_dale_chall_readability_score', 'N/A')}")
         print(f"  Coherence Assessment: {metrics.get('coherence_assessment', 'N/A')}")
         print(f"  Contextual Alignment Assessment: {metrics.get('contextual_alignment_assessment', 'N/A')}")
+        if "readability_error" in metrics:
+            print(f"  Readability Calculation Error: {metrics['readability_error']}")
         if "error" in metrics:
             print(f"  Error: {metrics['error']}")
             if "details" in metrics:
@@ -108,4 +120,4 @@ def analyze_json_files_in_directory(directory_path="output_json"):
 
 
 if __name__ == "__main__":
-    analyze_json_files_in_directory() 
+    analyze_json_files_in_directory() # Run analysis on "output_json" directory by default
