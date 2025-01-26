@@ -1,23 +1,27 @@
 {
-    "title": "Super Searching with DuckDuckGo",
+    "title": "Exploring Ancient Egypt",
     "grade_level_appropriateness_assessment": "Excellent",
     "sections": [
         {
-            "heading": "Introduction to DuckDuckGo",
-            "content": "DuckDuckGo is a search engine, like Google, but it's known for being more private! It helps you find information on the internet. But did you know you can make your searches even better?"
+            "heading": "Welcome to Ancient Egypt!",
+            "content": "Get ready to travel back in time! Ancient Egypt was a super cool place with huge pyramids, powerful rulers called pharaohs, and a life-giving river. It all happened over 4,000 years ago!"
         },
         {
-            "heading": "Boolean Search: Using AND, OR, and NOT",
-            "content": "Imagine you're telling the search engine exactly what you want. You can do this using special words called 'Boolean operators':\n\n*   **AND:** Use 'AND' to find results that include *both* words. For example, 'cats AND dogs' will show results about both cats and dogs.\n*   **OR:** Use 'OR' to find results that include *either* word. For example, 'pizza OR pasta' will show results about pizza, pasta, or both.\n*   **NOT:** Use 'NOT' to exclude results with a certain word. For example, 'cars NOT trucks' will show results about cars but not trucks."
+            "heading": "The Amazing Pyramids of Giza",
+            "content": "Imagine giant triangles made of stone \u2013 that's the pyramids! \n\n*   They were tombs for the pharaohs, who they believed would become gods after they died.\n*   The Great Pyramid is HUGE, with millions of blocks of stone. Some blocks weighed more than a car!\n*   Workers used simple tools to build them, and it took many years.\n*   The pyramids were lined up with the stars and the Nile River."
         },
         {
-            "heading": "Searching Directly on Other Sites",
-            "content": "DuckDuckGo has some cool shortcuts!\n\n*   **\\ (backslash):** Type '\\' followed by a word to go directly to the first search result. For example, '\\wikipedia' will take you to the Wikipedia website.\n*   **! (exclamation point):** Type '!' followed by a website name to search directly on *that* website. For example, '!youtube funny cats' will search for 'funny cats' on YouTube."
+            "heading": "The Powerful Pharaohs",
+            "content": "Pharaohs were like kings, but people thought they were also gods! They made sure everything in Egypt was in order.\n\n*   **King Tut:** A young pharaoh whose tomb was found with lots of treasure.\n*   **Ramses II:** A strong ruler who won many battles and built amazing things.\n*   **Hatshepsut:** A female pharaoh who helped Egypt grow through trade."
         },
         {
-            "heading": "Other Cool Search Tricks",
-            "content": "There are other ways to make your searches better:\n\n*   You can use quotation marks \" \" to search for an exact phrase. For example, \"the quick brown fox\" will only show results that have that exact phrase.\n*   You can use parentheses ( ) to group search terms. For example, (cats OR dogs) AND food will find results about food for either cats or dogs. \n* You can use an asterisk * as a wildcard. For example, 'best * ever' will find results such as 'best movie ever' or 'best game ever'."
+            "heading": "The Nile River: Egypt's Life Source",
+            "content": "The Nile River was super important to the Egyptians. It gave them:\n\n*   **Water:** For drinking, farming, and getting around.\n*   **Food:** The river flooded each year, leaving behind rich soil for growing crops.\n*   **Transportation:** It was like a highway for boats.\n*   **Spiritual Meaning:** They believed the river was a gift from the gods."
+        },
+        {
+            "heading": "Cool Facts and Stories",
+            "content": "* The Egyptians believed in an afterlife, and they thought the soul went on a journey.\n*   They mummified bodies to preserve them for the afterlife, even taking out the brain!\n*   They were great at math and astronomy, which helped them make calendars and build pyramids."
         }
     ],
-    "summary": "DuckDuckGo helps you search the internet, and you can use special tricks like AND, OR, NOT, \\, and ! to find exactly what you're looking for! Using quotation marks, parentheses, and wildcards can also make your searches more effective."
+    "summary": "Ancient Egypt was a fascinating civilization with amazing pyramids, powerful pharaohs, and the life-giving Nile River. They were smart in math and astronomy, and believed in an exciting afterlife!"
 }

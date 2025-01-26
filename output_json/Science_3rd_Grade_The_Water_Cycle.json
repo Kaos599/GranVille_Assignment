@@ -1,23 +1,23 @@
 {
-    "title": "DuckDuckGo Search Tricks for Kids",
+    "title": "The Water Cycle: Water's Big Trip!",
     "grade_level_appropriateness_assessment": "Excellent",
     "sections": [
         {
-            "heading": "What is DuckDuckGo?",
-            "content": "DuckDuckGo is a search engine, like Google, but it's a little different. It helps you find things on the internet. It's like a super-smart helper that knows where to look for information."
+            "heading": "What is the Water Cycle?",
+            "content": "Have you ever wondered where rain comes from or where the ocean water goes? It's all part of the water cycle! It's like a big circle where water moves around our Earth."
         },
         {
-            "heading": "Quick Ways to Search",
-            "content": "Sometimes you want to find something really fast. Here are a couple of tricks:\n\n*   **The \\ Trick:** If you type a backslash ( \\ ) before a word, like \\cats, DuckDuckGo will take you straight to the first search result for 'cats'. It's like a shortcut!\n*   **The ! Trick:** If you type an exclamation mark ( ! ) before something, like !youtube funny cats, DuckDuckGo will search YouTube directly for 'funny cats'. It's like telling DuckDuckGo to look on a different website."
+            "heading": "The Four Steps of the Water Cycle",
+            "content": "The water cycle has four main steps:\n\n*   **Evaporation:** This is when the sun heats up water in rivers, lakes, and the ocean, and turns it into a mist called water vapor. Imagine water turning into a steamy cloud!\n*   **Condensation:** The water vapor goes up into the sky and cools down. It turns back into tiny water drops and makes clouds. Just like when you see your breath on a cold day.\n*   **Precipitation:** When the clouds get too full of water, it falls back to Earth as rain, snow, or hail. It's like the clouds are taking a shower!\n*   **Collection:** The rain, snow, or hail lands on the ground and flows into rivers, lakes, and oceans. Then the cycle starts all over again!"
         },
         {
-            "heading": "Using 'AND', 'OR', and 'NOT'",
-            "content": "These are like secret codes for searching! \n\n*   **'AND'**: If you want to find things that have BOTH words, use 'AND'. For example, 'dogs AND cats' will find things about both dogs and cats. Usually, if you just type two words, DuckDuckGo does the 'AND' for you. \n*   **'OR'**: If you want to find things about either one word or another, use 'OR'. For example, 'apples OR bananas' will find things about apples or bananas or both. \n*   **'NOT'**: If you want to find things that DON'T have a word, use 'NOT'. For example, 'cars NOT red' will find things about cars that are not red. "
+            "heading": "Why is the Water Cycle Important?",
+            "content": "The water cycle is super important for our planet. It gives us:\n\n*   Water to drink.\n*   Water for plants to grow.\n*   Rain to fill our rivers and lakes.\n*   Snow for fun!\n\nIt also helps to keep the Earth at the right temperature and keeps plants and animals alive."
         },
         {
-            "heading": "Search Suggestions",
-            "content": "When you start typing something in the search box, DuckDuckGo might show you some suggestions. These suggestions can help you find what you are looking for even faster. It's like DuckDuckGo helping you guess what you want!"
+            "heading": "Fun Facts!",
+            "content": "* The water cycle is always happening, even when it's sunny!\n* The sun is the engine that makes the water cycle go.\n* Water is always moving from the Earth to the sky and back again."
         }
     ],
-    "summary": "DuckDuckGo is a search engine that helps you find things on the internet. You can use tricks like \\ for shortcuts, ! to search other sites, and codes like 'AND', 'OR', and 'NOT' to make your searches even better. DuckDuckGo also gives you helpful search ideas as you type."
+    "summary": "The water cycle is how water moves around our planet in a big circle. It goes from water, to mist, to clouds, to rain, and then back to water again. It's very important for all living things!"
 }
