@@ -139,10 +139,6 @@ These metrics provide an initial assessment of the linguistic clarity and grade-
 *   **Fact-Checking Module:**  Enhance the fact-checking process by more systematically verifying factual claims against DuckDuckGo search results or dedicated fact-checking APIs.
 *   **Content Engagement Analysis:** Implement metrics to assess the engagement potential of the content (e.g., sentiment analysis, linguistic feature analysis).
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). See the `LICENSE` file for details.
-
 ## Project Status
 
 [![Project Status: Prototype](https://img.shields.io/badge/Project%20Status-Prototype-orange.svg)](#project-description)
